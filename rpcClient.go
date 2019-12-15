@@ -18,6 +18,7 @@ type rpcClient struct {
 	passwd     string
 	httpClient *http.Client
 	timeout    int
+	walletName string
 }
 
 // rpcRequest represent a RCP request
@@ -74,6 +75,10 @@ func newClient(host string, port int, user, passwd string, useSSL bool, timeout 
 		httpClient = &http.Client{}
 	}
 	c = &rpcClient{serverAddr: fmt.Sprintf("%s%s:%d", serverAddr, host, port), user: user, passwd: passwd, httpClient: httpClient, timeout: timeout}
+
+	if c.walletName != "" {
+		c.serverAddr = fmt.Sprintf("%s/wallet/%s", c.serverAddr, c.walletName)
+	}
 	return
 }
 
