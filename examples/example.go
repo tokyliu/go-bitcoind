@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/toorop/go-bitcoind"
+	"github.com/tokyliu/go-bitcoind"
 	"log"
 )
 
@@ -13,10 +13,11 @@ const (
 	USESSL             = false
 	WALLET_PASSPHRASE  = "p1"
 	WALLET_PASSPHRASE2 = "p2"
+	WALLET_NAME		   = "btc"
 )
 
 func main() {
-	bc, err := bitcoind.New(SERVER_HOST, SERVER_PORT, USER, PASSWD, USESSL)
+	bc, err := bitcoind.New(SERVER_HOST, SERVER_PORT, USER, PASSWD, USESSL, WALLET_NAME)
 	if err != nil {
 		log.Fatalln(err)
 	}
