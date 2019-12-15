@@ -76,7 +76,7 @@ func newClient(host string, port int, user, passwd string, useSSL bool,walletNam
 	c = &rpcClient{serverAddr: fmt.Sprintf("%s%s:%d", serverAddr, host, port), user: user, passwd: passwd, httpClient: httpClient, timeout: timeout}
 
 	if walletName != "" {
-		c.serverAddr = fmt.Sprintf("%s/wallet/%s", c.serverAddr, c.walletName)
+		c.serverAddr = fmt.Sprintf("%s/wallet/%s", c.serverAddr, walletName)
 	}
 	return
 }
